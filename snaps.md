@@ -2,7 +2,7 @@
 
 ## Extend the functionality of MetaMask
 
-[Snaps](https://metamask.io/snaps/) is a system that allows anyone to safely extend the capabilities of MetaMask. A snap is a program that we run in an isolated environment that can customize the wallet experience.
+[Snaps](https://metamask.io/snaps/) is a system that allows anyone to safely extend the capabilities of MetaMask. A snap is a program that runs in an isolated environment that can customize the wallet experience.
 
 For example, a snap can add new APIs to MetaMask, add support for different blockchain protocols, or modify existing functionality using internal APIs. Snaps is a new way to create web3 end user experiences, by modifying MetaMask in ways that were impossible before.
 
@@ -14,49 +14,27 @@ Snaps execute in a sandboxed environment based on [Hardened JavaScript](https://
 
 Snaps is pre-release software. To try Snaps, install [MetaMask Flask](https://metamask.io/flask/), a canary distribution for developers that provides access to upcoming features.
 
+## Question
+
 <Quiz id={"89b8i"} /> ~ put quiz here!
 
 </Section>
 
 
-<Section name="2. Functionality Overview" description="Understanding everything your ENS is capable of">
+<Section name="2. Overview of Features" description="Features">
 
-## Name Resolution
+## Features
 
-At its core ENS allows us to convert a human-readable name like **nick.eth** into a machine-readable address such as **0xb8c2C29ee19D8307cb7255e1Cd9CbDE883A267d5**. This is generally referred to as **forwards resolution**.
-
-The most common place you will notice your own ENS name is in dApps. Due to the Primary Name (aka **reverse resolution**) abilities of the ENS contracts dApps can fetch a user's primary name and show this in their interface. This allows us to give users the same profile across the entire ecosystem.
-
-![ENS Username & Avatar](https://i.imgur.com/pO8xwN9.png)
-
-## Subdomains & Custom Resolver
-
-ENS allows users to write their own resolver in the form of a smart contract. You can extend the behaviour of domains by altering the **Resolver** field of your domain and pointing it towards your smart contract. This means you could write your own logic to control records, subdomains, and do all sorts of things like assign subdomains to NFT holders, or anything you could image. Read more about [writing your own resolver](https://docs.ens.domains/contract-developer-guide/writing-a-resolver).
-
-![ENS Subdomains](https://i.imgur.com/LcbrAwc.png)
-
-## Internet Domain Compatability
-
-In addition to the smart contract powered **.eth** TLD, the ENS smart contracts allow for any Internet Domain (.com, .net, .org, etc) to be used as an ENS Name through the use of our DNSSEC Integration. Read more about [ID Compatability](https://docs.ens.domains/dns-registrar-guide).
-
-![Internet Domain Compatability](https://i.imgur.com/hoUNTgf.png)
-
-## Offchain Data
-
-With the recent implementation of CCIP Read (Also known as [EIP-3668](https://eips.ethereum.org/EIPS/eip-3668)) we are able to read data from other chains or from other external locations. This enables us to have name information controlled by for example layer 2's, rollups, other chains, and centralized servers. More information about ENS and L2 Support can be found in the [ENS Layer2 and offchain data support
-](https://docs.ens.domains/dapp-developer-guide/ens-l2-offchain).
-
-![ENS Offchain](https://i.imgur.com/tmb7Qu3.png)
+At present, snaps can (1) create new RPC methods for websites to call, (2) call many of the same RPC methods that websites can call, and (3) access a limited set of snap-exclusive RPC methods. The following metrhods are currently live in MetaMask Flask. 
 
 ## Question
 
 <Quiz id={"bv6ew"} />
 
-
 <Quiz id={"qrakr"} />
 
-
 </Section>
+
 
 <Section name="3. Registering an ENS" description="Getting your ">
 
