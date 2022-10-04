@@ -14,6 +14,8 @@ Snaps execute in a sandboxed environment based on [Hardened JavaScript](https://
 
 Snaps is pre-release software. To try Snaps, install [MetaMask Flask](https://metamask.io/flask/), a canary distribution for developers that provides access to upcoming features.
 
+_Note: You cannot run MetaMask Flask alongside MetaMask. It is recommended to install it in a separate browser profile, and you should not use any of your existing accounts in Flask._
+
 ## Question
 
 <Quiz id={"89b8i"} /> ~ put quiz here!
