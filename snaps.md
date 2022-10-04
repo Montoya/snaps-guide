@@ -25,7 +25,7 @@ Snaps is pre-release software. To try Snaps, install [MetaMask Flask](https://me
 
 ## Features
 
-At present, snaps can (1) create new RPC methods for websites to call, (2) call many of the same RPC methods that websites can call, and (3) access a limited set of snap-exclusive RPC methods. The following metrhods are currently live in MetaMask Flask. 
+At present, snaps can (1) create new RPC methods for websites to call, (2) call many of the same RPC methods that websites can call, and (3) access a limited set of snap-exclusive RPC methods. The following methods are currently live in MetaMask Flask: 
 
 ## Question
 
