@@ -102,6 +102,8 @@ You've now successfully connected, installed, and interacted with your snap.
 
 <Section name="4. Building your snap" description="Learn how to build your own snap with this example">
 
+## Learn how to build your own snap by modifying the template
+
 Customize your snap by editing and expanding `index.ts` in the `packages/snap/src` folder.
 
 Initially it contains an example request that utilizes the `snap_confirm` method to display a custom confirmation screen:
@@ -146,38 +148,24 @@ Congratulations! You just learned how to build your own snap!
 
 <Section name="Dev Resources" description="Developer Resources">
 
-## ENS Developer Resources
+## More Resources
 
-### [Quickstart](https://docs.ens.domains/dapp-developer-guide/ens-enabling-your-dapp)
+### [MetaMask Snaps Deveopment Guide](https://docs.metamask.io/guide/snaps-development-guide.html)
 
-Everything you need to know to get started implementing ENS in your dApp.
+Covers a wide range of topics related to developing snaps.
 
-### [Docs](https://docs.ens.domains)
+### Open-Source Example Snaps
+- FilSnap for Filecoin: [Repo](https://github.com/chainsafe/filsnap) &bull; [Demo](https://filsnap.chainsafe.io/)
+- StarkNet Snap: [Repo](https://github.com/ConsenSys/starknet-snap) &bull; [Demo](https://app.starknet-snap.consensys-solutions.net/)
+- Password Manager Snap: [Repo](https://github.com/ritave/snap-passwordManager)
 
-Your go-to location for protocol information and examples.
+### Talks and Workshops
+- [How to Revolutionize Web3 Development in 20 Minutes - ETH Denver, Feb 2022](https://www.youtube.com/watch?v=KhpCS8EbKTE)
+- [Introduction to MetaMask Snaps - ETH Rio, March 2022](https://www.youtube.com/watch?v=XL3OduRT8js)
+- [Workshop: Expand MetaMask with Snaps - EthCC Paris, Aug 2022](https://www.youtube.com/watch?v=BWII6nkT-2w)
 
-### [Metadata Service](https://metadata.ens.domains/docs)
+### Stay in touch
 
-Metadata service that allows for fetching data .
-
-### [Libraries](https://docs.ens.domains/dapp-developer-guide/ens-libraries)
-- [Ethers](https://docs.ethers.io/v5/api/providers/provider/#Provider--ens-methods)
-- [Wagmi](https://wagmi.sh/docs/hooks/useEnsName)
-- [ENS.js](https://www.npmjs.com/package/@ensdomains/ensjs)
-- [Web3.js](https://web3js.readthedocs.io/en/v1.2.0/web3-eth-ens.html)
-- [Web3j](https://github.com/web3j/web3j)
-- [KEthereum](https://github.com/komputing/KEthereum/tree/master/ens)
-- [web3.py](https://web3py.readthedocs.io/en/stable/ens_overview.html)
-- [go-ens](https://github.com/wealdtech/go-ens)
-
-### [Mirror](https://ens.mirror.xyz/)
-
-For the latest news and updates about the ENS Ecosystem.
-
-### [Medium](https://medium.com/the-ethereum-name-service)
-
-For our archive of Articles.
-
-![More Coming Soon](https://i.imgur.com/TaB3p5o.png)
+Have questions? Need help? Head to the [MetaMask Snaps Discussion Board](https://github.com/MetaMask/snaps-skunkworks/discussions) on GitHub to talk to the platform team. 
 
 </Section>
