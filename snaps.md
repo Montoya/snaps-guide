@@ -29,6 +29,26 @@ _Note: You cannot run MetaMask Flask alongside MetaMask. It is recommended to in
 
 At present, snaps can (1) create new RPC methods for websites to call, (2) call many of the same RPC methods that websites can call, and (3) access a limited set of snap-exclusive RPC methods. The following methods are currently live in MetaMask Flask: 
 
+#### Display a custom confirmation screen in MetaMask &bull; [Learn more](./snaps-rpc-api.html#snap-confirm)
+
+Show a MetaMask popup with custom text and buttons to approve or reject an action. This can be used to create requests, confirmations, and opt-in flows for a snap.
+
+#### Notify users in MetaMask &bull; [Learn more](./snaps-rpc-api.html#snap-notify)
+
+MetaMask Flask introduces a generic notifications interface that can be utilized by any snap with the notifications permission. A short notification text can be triggered by a snap for actionable or time-sensitive information.
+
+#### Store and manage data on your device &bull; [Learn more](./snaps-rpc-api.html#snap-managestate)
+
+Store, update, and retrieve data securely, with encryption by default.
+
+#### Control non-EVM accounts and assets in MetaMask &bull; [Learn more](./snaps-rpc-api.html#snap-getbip44entropy)
+
+Derive BIP-32 and BIP-44 keypairs based on the Secret Recovery Phrase without exposing it. With the power to manage keys, you can build snaps to support a variety of blockchain protocols.
+
+#### Populate MetaMask's pre-transaction window with custom transaction insights
+
+Bring your insights, anti-phishing, and security solutions to the MetaMask UI with the transaction insights API.
+
 ## Question
 
 <Quiz id={"bv6ew"} />
@@ -38,45 +58,37 @@ At present, snaps can (1) create new RPC methods for websites to call, (2) call 
 </Section>
 
 
-<Section name="3. Registering an ENS" description="Getting your ">
+<Section name="3. Getting Started" description="Learn how to build your own snap">
 
-## How to register
+## Pre-requisites
 
-Registering your first ENS name is super easy through the use of the [ENS Manager](http://app.ens.domains/).
+First, make sure you have an up to date Chromium or Firefox browser and make sure you have [MetaMask Flask](https://metamask.io/flask/) installed in a separate browser profile from any other installation of MetaMask. Then, make sure you have [Node.js](https://nodejs.org/) version 16.0 (it is recommended to use [nvm](https://github.com/nvm-sh/nvm)). 
 
-![Search your Name](https://i.imgur.com/D4ntUeO.png)
+## Quick start using our template
 
-Once you arrive at the name's page and the name is available. (Checkout the **register** tab). You should see a live calculation of the costs for registering that name. Names with fewer then 5 characters, and recently expired names have different costs. For more information on registration costs, check our [FAQ](https://docs.ens.domains/permanent-registrar-faq#how-much-will-the-yearly-renewals-cost).
+Start building your own snap using [our template](https://github.com/MetaMask/template-snap-monorepo) built with TypeScript and React. Clone the repository [via GitHub](https://github.com/MetaMask/template-snap-monorepo/generate) and open it on your local machine using e.g. the command line.
 
-![](https://i.imgur.com/xlcWoJ4.png)
+> NB: Snaps should work with the LTS version of Node.js, but we recommend using the version specified in the template's `.nvmrc` file. If you use [nvm](https://github.com/nvm-sh/nvm) you can switch easily with calling `nvm use` at the root of the project.
 
-Once you click the **Request to Register** button and confirm the transaction the manager will reserve the name for you. After this you will need to wait for one minute. This is done to protect you from frontrunning and ensures you get the name you desired.
+From the root of the repo, install the dependencies:
 
-![](https://i.imgur.com/D8EUxod.png)
+```shell
+yarn
+```
 
-![](https://i.imgur.com/pGMw8Ce.png)
+Start the development server:
 
-![](https://i.imgur.com/pbTJ2vq.png)
+```shell
+yarn start
+```
 
-Great! Our name is now reserved for our second transaction. You can now click the **Register** button to complete the registration process.
+You should now be serving both (1) the front-end and (2) the snap locally. Time to check it out in action with MetaMask Flask at [`http://localhost:3000/`](http://localhost:3000/). 
 
-![](https://i.imgur.com/3NrIBEl.png)
+1. Click the Connect button and the MetaMask Flask extension should pop up and require you to approve the template snap's permissions. 
+2. Once connected, try out the Send message button to display a custom message within a confirmation screen in MetaMask.
 
-**Congratulations!** 🎉 You now own an ENS name! To set it as your **Primary Name** click the **"Set As Primary ENS Name"** button and follow the steps.
+You've now successfully connected, installed, and interacted with your snap.
 
-## How to set Avatar
-
-To set your avatar you can go to the [ENS Manager](https://app.ens.domains/) and select the name you would like to set an **Avatar** for.
-
-Now you are on the page simply hit **ADD/EDIT RECORD** and scroll down to the **avatar** field.
-
-![](https://i.imgur.com/fLFw8Ey.png)
-
-### The Avatar Field
-
-The Avatar Field can be filled with a variety of different types of text. In the example below I am uploading an **IPFS** link (using **ipfs://**), however you could also use **Arweave**, a link to an NFT (using [CAIP-29](https://github.com/ChainAgnostic/CAIPs/blob/master/CAIPs/caip-29.md)), base64 image, or any regular **HTTP(S)** url will do.
-
-![](https://i.imgur.com/Scbp1AW.png)
 
 ### Question
 
@@ -88,58 +100,42 @@ The Avatar Field can be filled with a variety of different types of text. In the
 
 </Section>
 
-<Section name="4. Integrate ENS" description="Integrate ENS into your Project">
+<Section name="4. Building your snap" description="Learn how to build your own snap with this example">
 
-## Resolving ENS names for Users
+Customize your snap by editing and expanding `index.ts` in the `packages/snap/src` folder.
 
-With the help of your favourite library such as [Ethers](https://docs.ethers.io/v5/api/providers/provider/#Provider--ens-methods), [Wagmi](https://wagmi.sh/docs/hooks/useEnsName), [ENS.js](https://www.npmjs.com/package/@ensdomains/ensjs), [Web3.js](https://web3js.readthedocs.io/en/v1.2.0/web3-eth-ens.html), [Web3j](https://github.com/web3j/web3j), [KEthereum](https://github.com/komputing/KEthereum/tree/master/ens), [web3.py](https://web3py.readthedocs.io/en/stable/ens_overview.html), [go-ens](https://github.com/wealdtech/go-ens), and many more.
+Initially it contains an example request that utilizes the `snap_confirm` method to display a custom confirmation screen:
 
-![User Profile & Lookup example](https://i.imgur.com/9G8yvJ2.png)
+```ts
+import { OnRpcRequestHandler } from '@metamask/snap-types';
+import { getMessage } from './message';
 
-It's that easy! Now your dApp is ready to show everyone's names everywhere! And don't forget to fallback to addresses when the user doesn't have a name.
-
-#### React Example
-
-Below is an example snippet of what this would look like using [wagmi](https://wagmi.sh/docs/hooks/useEnsName).
-
-```tsx
-import { useAccount, useEnsAvatar, useEnsName } from 'wagmi';
-const shortenAddress = (address) => `${address.substr(0, 5)}...${address.substr(-4)}`;
-export const UserProfile = () => {
-    const { address } = useAccount();
-    const { data: name, isSuccess: isNameSuccess } = useEnsName({ address });
-    const { data: avatar, isSuccess: isAvatarSuccess } = useEnsAvatar({
-        addressOrName: address,
-    });
-    return (
-        <div>
-            <div>
-                {isAvatarSuccess && avatar ? (
-                    <img src={avatar} />
-                ) : (
-                    <img src="" />
-                )}
-            </div>
-            <div>
-                {isNameSuccess && name ? (
-                    <div>
-                        <span>{name}</span>
-                        <span>{shortenAddress(address)}</span>
-                    </div>
-                ) : (
-                    <div>{address}</div>
-                )}
-            </div>
-        </div>
-    );
+export const onRpcRequest: OnRpcRequestHandler = ({ origin, request }) => {
+  switch (request.method) {
+    case 'hello':
+      return wallet.request({
+        method: 'snap_confirm',
+        params: [
+          {
+            prompt: getMessage(origin),
+            description:
+              'This custom confirmation is just for display purposes.',
+            textAreaContent:
+              'Edit the source code to make your snap do what you want.',
+          },
+        ],
+      });
+    default:
+      throw new Error('Method not found.');
+  }
 };
 ```
 
-## Retrieving Address from Name
+Modify the text in the `description` or `textAreaContent` field. Refresh the dapp in your browser, and click the **Connect** button to reinstall the snap.
 
-You may however want users to be able to search for each other, mention one another, or even challenge each other to a game of tic tac to. Now should this be the case there is the **resolveName** functionality that allows you to enter any valid ENS name and get back the address.
+The next time you click the **Send message** button, you will see the updated text in the confirmation screen.
 
-![Address Resolution & Lookup Example](https://i.imgur.com/yaMUwih.png)
+Congratulations! You just learned how to build your own snap!
 
 ## Question
 
