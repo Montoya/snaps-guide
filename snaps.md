@@ -21,15 +21,21 @@ _Note: You cannot run MetaMask Flask alongside MetaMask. It is recommended to in
 What can you do with Snaps? 
 
 A. Add new APIs to MetaMask
+
 B. Add support for different blockchain protocols
+
 C. Modify existing functionality using internal MetaMask APIs
+
 **D. All of the above**
 
 How does Snaps allow devs to extend MetaMask while protecting user data? 
 
 A. By using a centralized registry for approved snaps
+
 B. By using new encryption methods
+
 **C. By using a sandboxed environment with a permissions model**
+
 D. By using confirmation screens frequently
 
 </Section>
@@ -66,8 +72,11 @@ Bring your insights, anti-phishing, and security solutions to the MetaMask UI wi
 Which of these is not a Snaps Platform method currently available in MetaMask Flask?
 
 **A. Deploy an ERC721 contract**
+
 B. Notify users in MetaMask
+
 C. Show custom transaction insights
+
 D. Store and manage data on your device
 
 </Section>
@@ -110,8 +119,11 @@ You've now successfully connected, installed, and interacted with your snap.
 Which of these is not a pre-requisite for developing your own snap? 
 
 A. MetaMask Flask
+
 B. Node.js version 16
+
 **C. Stable Diffusion**
+
 D. Latest Chromium or Firefox browser
 
 
@@ -163,8 +175,11 @@ Congratulations! You just learned how to build your own snap!
 Which method is called by the dapp in the template-snap-monorepo example to display the custom confirmation screen? 
 
 A. confirm
+
 **B. hello**
+
 C. invoke
+
 D. render
 
 
