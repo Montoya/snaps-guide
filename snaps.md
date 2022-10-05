@@ -150,7 +150,7 @@ Congratulations! You just learned how to build your own snap!
 
 ## More Resources
 
-### [MetaMask Snaps Deveopment Guide](https://docs.metamask.io/guide/snaps-development-guide.html)
+### [MetaMask Snaps Development Guide](https://docs.metamask.io/guide/snaps-development-guide.html)
 
 Covers a wide range of topics related to developing snaps.
 
@@ -160,9 +160,9 @@ Covers a wide range of topics related to developing snaps.
 - Password Manager Snap: [Repo](https://github.com/ritave/snap-passwordManager)
 
 ### Talks and Workshops
-- [How to Revolutionize Web3 Development in 20 Minutes - ETH Denver, Feb 2022](https://www.youtube.com/watch?v=KhpCS8EbKTE)
-- [Introduction to MetaMask Snaps - ETH Rio, March 2022](https://www.youtube.com/watch?v=XL3OduRT8js)
-- [Workshop: Expand MetaMask with Snaps - EthCC Paris, Aug 2022](https://www.youtube.com/watch?v=BWII6nkT-2w)
+- [How to Revolutionize Web3 Development in 20 Minutes](https://www.youtube.com/watch?v=KhpCS8EbKTE) - ETH Denver, Feb 2022
+- [Introduction to MetaMask Snaps](https://www.youtube.com/watch?v=XL3OduRT8js) - ETH Rio, March 2022
+- [Workshop: Expand MetaMask with Snaps](https://www.youtube.com/watch?v=BWII6nkT-2w) - EthCC Paris, Aug 2022
 
 ### Stay in touch
 
