@@ -18,7 +18,19 @@ _Note: You cannot run MetaMask Flask alongside MetaMask. It is recommended to in
 
 ## Question
 
-<Quiz id={"89b8i"} /> ~ put quiz here!
+What can you do with Snaps? 
+
+A. Add new APIs to MetaMask
+B. Add support for different blockchain protocols
+C. Modify existing functionality using internal MetaMask APIs
+**D. All of the above**
+
+How does Snaps allow devs to extend MetaMask while protecting user data? 
+
+A. By using a centralized registry for approved snaps
+B. By using new encryption methods
+**C. By using a sandboxed environment with a permissions model**
+D. By using confirmation screens frequently
 
 </Section>
 
@@ -51,9 +63,12 @@ Bring your insights, anti-phishing, and security solutions to the MetaMask UI wi
 
 ## Question
 
-<Quiz id={"bv6ew"} />
+Which of these is not a Snaps Platform method currently available in MetaMask Flask?
 
-<Quiz id={"qrakr"} />
+**A. Deploy an ERC721 contract**
+B. Notify users in MetaMask
+C. Show custom transaction insights
+D. Store and manage data on your device
 
 </Section>
 
@@ -92,10 +107,12 @@ You've now successfully connected, installed, and interacted with your snap.
 
 ### Question
 
-<Quiz id={"r3wki"} />
+Which of these is not a pre-requisite for developing your own snap? 
 
-
-<Quiz id={"2mtcw"} />
+A. MetaMask Flask
+B. Node.js version 16
+**C. Stable Diffusion**
+D. Latest Chromium or Firefox browser
 
 
 </Section>
@@ -133,6 +150,8 @@ export const onRpcRequest: OnRpcRequestHandler = ({ origin, request }) => {
 };
 ```
 
+> The "hello" method is exported by the snap, meaning that it can be called by a dapp after connecting to the snap. This is how a snap can have its own API for dapps: by exporting methods to be called by dapps. Any dapp can connect to this snap and call the "hello" method to display this custom confirmation window. 
+
 Modify the text in the `description` or `textAreaContent` field. Refresh the dapp in your browser, and click the **Connect** button to reinstall the snap.
 
 The next time you click the **Send message** button, you will see the updated text in the confirmation screen.
@@ -141,7 +160,12 @@ Congratulations! You just learned how to build your own snap!
 
 ## Question
 
-<Quiz id={"qppyi"} />
+Which method is called by the dapp in the template-snap-monorepo example to display the custom confirmation screen? 
+
+A. confirm
+**B. hello**
+C. invoke
+D. render
 
 
 </Section>
