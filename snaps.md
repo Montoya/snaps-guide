@@ -43,29 +43,27 @@ D. By using confirmation screens frequently
 
 <Section name="2. Overview of Features" description="Features">
 
-## Features
-
 At present, snaps can (1) create new RPC methods for websites to call, (2) call many of the same RPC methods that websites can call, and (3) access a limited set of snap-exclusive RPC methods. The following methods are currently live in MetaMask Flask: 
 
-#### Display a custom confirmation screen in MetaMask &bull; [Learn more](./snaps-rpc-api.html#snap-confirm)
+#### Display custom dialogs in MetaMask 
 
-Show a MetaMask popup with custom text and buttons to approve or reject an action. This can be used to create requests, confirmations, and opt-in flows for a snap.
+Show a MetaMask popup with custom content. These dialogs can be alerts, confirmation flows, or even prompts for input from the user. [Learn more](https://docs.metamask.io/guide/snaps-rpc-api.html#snap-dialog)
 
-#### Notify users in MetaMask &bull; [Learn more](./snaps-rpc-api.html#snap-notify)
+#### Notify users in MetaMask 
 
-MetaMask Flask introduces a generic notifications interface that can be utilized by any snap with the notifications permission. A short notification text can be triggered by a snap for actionable or time-sensitive information.
+MetaMask Snaps introduces a generic notifications interface that can be utilized by any snap with the notifications permission. A short notification text can be triggered by a snap for actionable or time-sensitive information. [Learn more](https://docs.metamask.io/guide/snaps-rpc-api.html#snap-notify)
 
-#### Store and manage data on your device &bull; [Learn more](./snaps-rpc-api.html#snap-managestate)
+#### Store and manage data on your device 
 
-Store, update, and retrieve data securely, with encryption by default.
+Store, update, and retrieve data securely, with encryption by default. [Learn more](https://docs.metamask.io/guide/snaps-rpc-api.html#snap-managestate)
 
-#### Control non-EVM accounts and assets in MetaMask &bull; [Learn more](./snaps-rpc-api.html#snap-getbip44entropy)
+#### Control non-EVM accounts and assets in MetaMask 
 
-Derive BIP-32 and BIP-44 keypairs based on the Secret Recovery Phrase without exposing it. With the power to manage keys, you can build snaps to support a variety of blockchain protocols.
+Derive BIP-32 and BIP-44 keypairs based on the Secret Recovery Phrase without exposing it. With the power to manage keys, you can build snaps to support a variety of blockchain protocols. [Learn more](https://docs.metamask.io/guide/snaps-rpc-api.html#snap-getbip32entropy)
 
 #### Populate MetaMask's pre-transaction window with custom transaction insights
 
-Bring your insights, anti-phishing, and security solutions to the MetaMask UI with the transaction insights API.
+Bring your insights, anti-phishing, and security solutions to the MetaMask UI with the transaction insights API. [Learn more](https://docs.metamask.io/guide/snaps-exports.html#ontransaction)
 
 ## Question
 
@@ -109,7 +107,7 @@ yarn start
 You should now be serving both (1) the front-end and (2) the snap locally. Time to check it out in action with MetaMask Flask at [`http://localhost:3000/`](http://localhost:3000/). 
 
 1. Click the Connect button and the MetaMask Flask extension should pop up and require you to approve the template snap's permissions. 
-2. Once connected, try out the Send message button to display a custom message within a confirmation screen in MetaMask.
+2. Once connected, try out the Send message button to display a custom message within a dialog in MetaMask.
 
 You've now successfully connected, installed, and interacted with your snap.
 
@@ -135,26 +133,27 @@ D. Latest Chromium or Firefox browser
 
 Customize your snap by editing and expanding `index.ts` in the `packages/snap/src` folder.
 
-Initially it contains an example request that utilizes the `snap_confirm` method to display a custom confirmation screen:
+Initially it contains an example request that utilizes the `snap_dialog` method to display a custom confirmation screen:
 
 ```ts
-import { OnRpcRequestHandler } from '@metamask/snap-types';
-import { getMessage } from './message';
+import { OnRpcRequestHandler } from '@metamask/snaps-types';
+import { panel, text } from '@metamask/snaps-ui';
 
 export const onRpcRequest: OnRpcRequestHandler = ({ origin, request }) => {
   switch (request.method) {
     case 'hello':
-      return wallet.request({
-        method: 'snap_confirm',
-        params: [
-          {
-            prompt: getMessage(origin),
-            description:
-              'This custom confirmation is just for display purposes.',
-            textAreaContent:
-              'Edit the source code to make your snap do what you want.',
-          },
-        ],
+      return snap.request({
+        method: 'snap_dialog',
+        params: {
+          type: 'Confirmation',
+          content: panel([
+            text(`Hello, **${origin}**!`),
+            text('This custom confirmation is just for display purposes.'),
+            text(
+              'But you can edit the snap source code to make it do something, if you want to!',
+            ),
+          ]),
+        },
       });
     default:
       throw new Error('Method not found.');
@@ -162,17 +161,17 @@ export const onRpcRequest: OnRpcRequestHandler = ({ origin, request }) => {
 };
 ```
 
-> The "hello" method is exported by the snap, meaning that it can be called by a dapp after connecting to the snap. This is how a snap can have its own API for dapps: by exporting methods to be called by dapps. Any dapp can connect to this snap and call the "hello" method to display this custom confirmation window. 
+> The "hello" method is exported by the snap, meaning that it can be called by a dapp after connecting to the snap. This is how a snap can have its own API for dapps: by exporting methods to be called by dapps. Any dapp can connect to this snap and call the "hello" method to display this custom dialog. 
 
-Modify the text in the `description` or `textAreaContent` field. Refresh the dapp in your browser, and click the **Connect** button to reinstall the snap.
+Modify the content of any `text(...)` container. Refresh the dapp in your browser, and click the **Connect** button to reinstall the snap.
 
-The next time you click the **Send message** button, you will see the updated text in the confirmation screen.
+The next time you click the **Send message** button, you will see the updated text in the dialog.
 
 Congratulations! You just learned how to build your own snap!
 
 ## Question
 
-Which method is called by the dapp in the template-snap-monorepo example to display the custom confirmation screen? 
+Which method is called by the dapp in the template example to display the custom dialog? 
 
 A. confirm
 
@@ -189,19 +188,7 @@ D. render
 
 ## More Resources
 
-### [MetaMask Snaps Development Guide](https://docs.metamask.io/guide/snaps-development-guide.html)
-
-Covers a wide range of topics related to developing snaps.
-
-### Open-Source Example Snaps
-- FilSnap for Filecoin: [Repo](https://github.com/chainsafe/filsnap) &bull; [Demo](https://filsnap.chainsafe.io/)
-- StarkNet Snap: [Repo](https://github.com/ConsenSys/starknet-snap) &bull; [Demo](https://app.starknet-snap.consensys-solutions.net/)
-- Password Manager Snap: [Repo](https://github.com/ritave/snap-passwordManager)
-
-### Talks and Workshops
-- [How to Revolutionize Web3 Development in 20 Minutes](https://www.youtube.com/watch?v=KhpCS8EbKTE) - ETH Denver, Feb 2022
-- [Introduction to MetaMask Snaps](https://www.youtube.com/watch?v=XL3OduRT8js) - ETH Rio, March 2022
-- [Workshop: Expand MetaMask with Snaps](https://www.youtube.com/watch?v=BWII6nkT-2w) - EthCC Paris, Aug 2022
+You can find templates, tutorials, and example projects in the [MetaMask Snaps Getting Started Guide](https://github.com/MetaMask/snaps-monorepo/discussions/675).
 
 ### Stay in touch
 
